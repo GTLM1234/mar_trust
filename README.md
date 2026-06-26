@@ -66,4 +66,5 @@ uvicorn app.main:app --reload
 
 - Roadmap: `docs/ROADMAP.md`
 - Contribucion: `docs/CONTRIBUTING.md`
+- Despliegue: `docs/DEPLOYMENT.md`
 - Decisiones tecnicas: `docs/adr/`
