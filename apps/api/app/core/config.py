@@ -26,6 +26,7 @@ class Settings(BaseSettings):
         alias="FRONTEND_ORIGIN",
     )
     database_url: str | None = Field(default=None, alias="DATABASE_URL")
+    database_pool_mode: str = Field(default="transaction", alias="DATABASE_POOL_MODE")
     jwt_secret_key: str | None = Field(default=None, alias="JWT_SECRET_KEY")
     access_token_expire_minutes: int = Field(
         default=30,
