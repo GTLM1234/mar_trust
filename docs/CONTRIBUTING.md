@@ -2,6 +2,13 @@
 
 ## Flujo de ramas
 
+### Modo rapido actual
+
+Por urgencia de despliegue, `main` queda como rama operativa unica. Los cambios
+criticos deben commitearse con mensajes claros y validarse antes de hacer push.
+
+### Flujo recomendado cuando haya mas tiempo
+
 1. Crear cambios desde `develop` o desde la rama tecnica correspondiente.
 2. Usar commits pequenos y descriptivos.
 3. Abrir Pull Request hacia `develop`.

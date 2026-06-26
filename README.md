@@ -34,13 +34,14 @@ infra/      Configuracion futura de despliegue e infraestructura.
 .github/    Plantillas y automatizaciones de GitHub.
 ```
 
-## Ramas principales
+## Despliegue rapido
 
-- `main`: produccion.
-- `develop`: integracion estable.
-- `frontend/vercel-deploy`: trabajo del frontend y Vercel.
-- `backend/fastapi-render`: trabajo del backend y Render.
-- `database/supabase-postgres`: modelo de datos, migraciones y Supabase.
+Por tiempo, el proyecto quedo consolidado para desplegar desde una sola rama:
+
+- `main`: fuente unica para Vercel, Render y Supabase.
+
+Las ramas tecnicas anteriores se conservan como respaldo historico, pero el
+flujo operativo inmediato es conectar Vercel y Render a `main`.
 
 ## Comandos iniciales
 

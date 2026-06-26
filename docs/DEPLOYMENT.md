@@ -15,6 +15,24 @@ PostgreSQL (Supabase)
 El frontend no debe conectarse directamente a PostgreSQL. Las reglas de negocio,
 autenticacion, permisos e indice de confianza deben vivir en FastAPI.
 
+## 0. Modo rapido con una sola rama
+
+Por tiempo, MarTrust queda consolidado en:
+
+```text
+main
+```
+
+Usa `main` como rama unica para:
+
+- Vercel: frontend `apps/web`.
+- Render: backend `apps/api`.
+- Supabase: base de datos PostgreSQL y Storage.
+
+Las ramas `frontend/vercel-deploy`, `backend/fastapi-render` y
+`database/supabase-postgres` quedan como respaldo historico. No necesitas usarlas
+para este primer despliegue.
+
 ## 1. Supabase
 
 ### 1.1 Crear el proyecto
@@ -70,10 +88,10 @@ Regla inicial:
 Conecta Render a la rama:
 
 ```text
-backend/fastapi-render
+main
 ```
 
-Antes de crear el servicio, esa rama debe estar sincronizada con `develop`.
+Render tomara solo el backend porque el servicio usa `rootDir: apps/api`.
 
 ### 2.2 Opcion A - Blueprint
 
@@ -131,8 +149,11 @@ Debe responder:
 Conecta Vercel a la rama:
 
 ```text
-frontend/vercel-deploy
+main
 ```
+
+Vercel tomara solo el frontend porque el proyecto debe configurarse con
+`Root Directory: apps/web`.
 
 ### 3.2 Configuracion del proyecto
 
@@ -160,14 +181,14 @@ VITE_API_URL=https://TU-SERVICIO.onrender.com
 No agregues `DATABASE_URL`, `JWT_SECRET_KEY` ni claves privadas de Supabase en
 Vercel. Todo secreto debe vivir en Render.
 
-## 4. Orden correcto de despliegue
+## 4. Orden rapido de despliegue
 
 1. Crear proyecto Supabase.
 2. Crear connection string para Render.
-3. Desplegar API en Render.
+3. Conectar Render al repo y rama `main`.
 4. Verificar `/api/v1/health`.
 5. Configurar `VITE_API_URL` en Vercel con la URL de Render.
-6. Desplegar frontend en Vercel.
+6. Conectar Vercel al repo y rama `main`.
 7. Configurar `FRONTEND_ORIGIN` en Render con la URL final de Vercel.
 8. Redeploy de Render para aplicar CORS final.
 
@@ -207,9 +228,9 @@ VITE_API_URL=https://tu-api.onrender.com
 
 ## 6. Checklist antes de produccion
 
-- `frontend/vercel-deploy` tiene build verde.
-- `backend/fastapi-render` tiene healthcheck verde.
-- `database/supabase-postgres` tiene migraciones revisadas.
+- `main` contiene frontend, backend y configuracion de despliegue.
+- Vercel apunta a `main` con `Root Directory: apps/web`.
+- Render apunta a `main` con `Root Directory: apps/api`.
 - `DATABASE_URL` no aparece en GitHub.
 - `VITE_API_URL` apunta a Render.
 - `FRONTEND_ORIGIN` apunta a Vercel.

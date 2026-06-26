@@ -662,6 +662,12 @@ Criterio de aceptacion:
 
 ## 7. Estrategia de ramas
 
+Nota operativa:
+
+Por urgencia de despliegue, el proyecto fue consolidado en `main` como rama
+unica para Vercel y Render. La estrategia de ramas descrita abajo se conserva
+como objetivo de trabajo ordenado cuando el proyecto tenga mas tiempo de ciclo.
+
 Ramas principales:
 
 - `main`: produccion.
