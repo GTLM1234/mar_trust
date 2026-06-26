@@ -1,0 +1,15 @@
+{
+  "name": "mar-trust",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Monorepo de MarTrust: plataforma de confianza para puestos de mariscos certificados.",
+  "workspaces": [
+    "apps/web"
+  ],
+  "scripts": {
+    "web:dev": "npm --workspace apps/web run dev",
+    "web:build": "npm --workspace apps/web run build",
+    "web:lint": "npm --workspace apps/web run lint",
+    "web:format": "npm --workspace apps/web run format"
+  }
+}
